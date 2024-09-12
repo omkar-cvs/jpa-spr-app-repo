@@ -3,6 +3,7 @@ package com.oks.jpa.demo.entity;
 import java.util.Set;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,7 +31,20 @@ public class Previlige {
 	private String name;
 	private float cost;
 	
-	@ManyToMany(mappedBy = "previliges")
+	public Previlige(String name, float cost) {
+		super();
+		this.name = name;
+		this.cost = cost;
+	}
+
+	/*
+	 * public Previlige(String name, float cost, Set<Emp> employees) { super();
+	 * this.name = name; this.cost = cost; this.employees = employees; }
+	 */
+
+	
+
+	@ManyToMany(mappedBy = "previliges",fetch = FetchType.LAZY)
 	Set<Emp> employees;
 
 }
