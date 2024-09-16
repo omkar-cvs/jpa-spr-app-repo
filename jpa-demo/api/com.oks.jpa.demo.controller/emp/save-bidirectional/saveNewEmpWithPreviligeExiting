@@ -1,0 +1,54 @@
+saveNewEmpWithPreviligeExiting
+
+http://localhost:8085/emp/save
+
+{
+    "previligeIdList":[1,3],
+    "empVo": {     
+        "name": "Mohan",
+        "job": "MGR",
+        "salary": 35       
+    }
+}
+
+{
+    "message": "SUCCESS",
+    "status": "200",
+    "empVo": [
+        {
+            "id": 6,
+            "name": "Mohan",
+            "job": "MGR",
+            "salary": 35.0,
+            "previliges": [
+                {
+                    "id": 1,
+                    "name": "Clube Membership",
+                    "cost": 55000.0,
+                    "employees": []
+                },
+                {
+                    "id": 3,
+                    "name": "Car",
+                    "cost": 800000.0,
+                    "employees": [
+                        {
+                            "id": 3,
+                            "name": "omkar",
+                            "job": "SE",
+                            "salary": 35.0,
+                            "previliges": []
+                        },
+                        {
+                            "id": 5,
+                            "name": "Shiv",
+                            "job": "Owner",
+                            "salary": 305.0,
+                            "previliges": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+saveOldEmpAddingExitingPrevilige
+
+usrl: 
+	http://localhost:8085/emp/previliges/save
+	
+Request Body:
+
+{
+    "previligeIdList":[2,3,4,5],
+    "empVo": {       
+        "name": "Shiv",
+        "job": "Owner",
+        "salary": 305       
+    }
+}
+
+----------------------------
+Response Body:
+
+{
+    "message": "SUCCESS",
+    "status": "200",
+    "empVo": [
+        {
+            "id": 5,
+            "name": "Shiv",
+            "job": "Owner",
+            "salary": 305.0,
+            "previliges": [
+                {
+                    "id": 2,
+                    "name": "Flat",
+                    "cost": 7000000.0,
+                    "employees": []
+                },
+                {
+                    "id": 4,
+                    "name": "Car",
+                    "cost": 800000.0,
+                    "employees": []
+                },
+                {
+                    "id": 5,
+                    "name": "Flat",
+                    "cost": 7000000.0,
+                    "employees": []
+                },
+                {
+                    "id": 3,
+                    "name": "Car",
+                    "cost": 800000.0,
+                    "employees": [
+                        {
+                            "id": 3,
+                            "name": "omkar",
+                            "job": "SE",
+                            "salary": 35.0,
+                            "previliges": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,59 @@
+saveNewEmpAndNewPrevilige
+
+http://localhost:8085/emp/save
+
+Request Body:
+{
+    "empVo": {
+        "name": "omkar",
+        "job": "SE",
+        "salary": 35,
+        "previliges": [
+            {
+                "name": "Car",
+                "cost": 800000
+            },
+            {
+                "name": "Flat",
+                "cost": 7000000
+            },
+            {
+                "name": "Clube Membership",
+                "cost": 55000
+            }
+        ]
+    }
+}
+Response Body:
+{
+    "message": "SUCCESS",
+    "status": "200",
+    "empVo": [
+        {
+            "id": 7,
+            "name": "omkar",
+            "job": "SE",
+            "salary": 35.0,
+            "previliges": [
+                {
+                    "id": 6,
+                    "name": "Clube Membership",
+                    "cost": 55000.0,
+                    "employees": null
+                },
+                {
+                    "id": 7,
+                    "name": "Flat",
+                    "cost": 7000000.0,
+                    "employees": null
+                },
+                {
+                    "id": 8,
+                    "name": "Car",
+                    "cost": 800000.0,
+                    "employees": null
+                }
+            ]
+        }
+    ]
+}

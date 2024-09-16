@@ -1,0 +1,39 @@
+saveNewPreviliges
+-------------------------
+usrl: 
+	http://localhost:8085/emp/previliges/save
+	
+Request Body:
+
+{
+      "previligeVo": [
+        {
+            "name": "Car",
+            "cost": 800000
+        },
+        {
+            "name": "Flat",
+            "cost": 7000000
+        }
+    ]
+}
+----------------------------
+Response Body:
+{
+    "message": "SUCCESS",
+    "status": "200",
+    "previligeVo": [
+        {
+            "id": 4,
+            "name": "Car",
+            "cost": 800000.0,
+            "employees": null
+        },
+        {
+            "id": 5,
+            "name": "Flat",
+            "cost": 7000000.0,
+            "employees": null
+        }
+    ]
+}
