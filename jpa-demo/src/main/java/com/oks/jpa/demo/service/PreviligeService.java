@@ -9,4 +9,5 @@ import com.oks.jpa.demo.vo.PreviligeVo;
 public interface PreviligeService {
 	List<PreviligeVo> savePrevilige(PreviligeRequestVo prv);
 	List<PreviligeVo> findAllPrevilige();
+	PreviligeVo findPreviligeById(Long id);
 }

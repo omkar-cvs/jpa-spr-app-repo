@@ -1,6 +1,7 @@
 package com.oks.jpa.demo.dao.mapper;
 
 import java.util.List;
+import java.util.Set;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -18,5 +19,6 @@ public interface PreviligeMapper {
 
 	List<PreviligeVo> convertDoToVoForPrevilige(List<Previlige> pl);
 	
-	List<Previlige> convertVoToDoForPrevilige(List<PreviligeVo> plv);
+	List<Previlige> convertVoToDoForPrevilige(List<PreviligeVo> pvl);	
+	
 }

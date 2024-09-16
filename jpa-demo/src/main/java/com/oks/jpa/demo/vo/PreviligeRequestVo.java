@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PreviligeRequestVo {
+  private static final long serialVersionUID = 1L;
   private  Long empId;
   private  List<PreviligeVo> previligeVo;
+  private  Long previligeId;
 }

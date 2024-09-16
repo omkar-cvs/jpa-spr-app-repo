@@ -1,6 +1,13 @@
 package com.oks.jpa.demo.entity;
 
+import java.util.List;
 import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -10,6 +17,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -23,7 +31,10 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
+//@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class ,property = "id")//it is not working
 public class Previlige {
+	 private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy =GenerationType.SEQUENCE,generator = "PREVILIGE_SEQ" )
 	@SequenceGenerator(name = "PREVILIGE_SEQ",initialValue = 1,allocationSize = 1,sequenceName = "PREVILIGE_SEQ")
@@ -45,6 +56,8 @@ public class Previlige {
 	
 
 	@ManyToMany(mappedBy = "previliges",fetch = FetchType.LAZY)
-	Set<Emp> employees;
+	//@JsonBackReference
+	@JsonIgnore	
+	List<Emp> employees;
 
 }

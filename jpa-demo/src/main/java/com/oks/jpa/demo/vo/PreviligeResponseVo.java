@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor(staticName = "serviceResponse")
 public class PreviligeResponseVo {
+	private static final long serialVersionUID = 1L;
 	private String message;
 	private String status;
 	private List<PreviligeVo> previligeVo;

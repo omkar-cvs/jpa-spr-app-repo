@@ -1,6 +1,7 @@
 package com.oks.jpa.demo.dao.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -27,6 +28,11 @@ public class PreviligeDaoImpl implements PreviligeDao {
 	@Override
 	public List<Previlige> findByPreviligeIn(List<Long> pvlId) {
 		return previligeRepository.findByIdIn(pvlId);
+	}
+
+	@Override
+	public Optional<Previlige> findPreviligeById(Long id) {		
+		return previligeRepository.findById(id);
 	}
 	
 	

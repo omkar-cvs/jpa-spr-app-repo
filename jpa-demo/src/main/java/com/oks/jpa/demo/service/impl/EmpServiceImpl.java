@@ -27,7 +27,7 @@ public class EmpServiceImpl implements EmpService {
 		Emp emp=EmpMapper.INSTANCE.convertVoToDoForEmp(empRequestVo.getEmpVo());
 		if(empRequestVo.getPreviligeIdList()!=null) {
 			List<Previlige> pvl=previligeDao.findByPreviligeIn(empRequestVo.getPreviligeIdList());
-			emp.setPreviliges(pvl.stream().collect(Collectors.toSet()));
+			emp.setPreviliges(pvl);
 		}
 		return EmpMapper.INSTANCE.convertDoToVoForEmp(empDao.saveEmp(emp));
 	}
@@ -35,6 +35,11 @@ public class EmpServiceImpl implements EmpService {
 	@Override
 	public List<EmpVo> findAllEmp() {		
 		return EmpMapper.INSTANCE.convertVoToDoForAllEmp(empDao.findAllEmp()); 
+	}
+
+	@Override
+	public EmpVo findEmpById(Long id) {
+		return EmpMapper.INSTANCE.convertDoToVoForEmp(empDao.findEmpById(id).get());
 	}
 
 }

@@ -24,7 +24,7 @@ public class PreviligeServiceImpl implements PreviligeService {
 	PreviligeDao previligeDao;
 	@Autowired
 	EmpDao empDao;
-
+/*
 	@Override
 	public List<PreviligeVo> savePrevilige(PreviligeRequestVo prv) {
 		Optional<Emp> empOpt = empDao.findEmpById(prv.getEmpId());
@@ -42,10 +42,32 @@ public class PreviligeServiceImpl implements PreviligeService {
 
 		return PreviligeMapper.INSTANCE.convertDoToVoForPrevilige(previligeDao.savePreviliges(previliges));
 	}
-
+*/
+	
+	//updating in exiting one Bidirection 
+	@Override
+	public List<PreviligeVo> savePrevilige(PreviligeRequestVo prv) {	
+			   List<Previlige> previliges = PreviligeMapper.INSTANCE.convertVoToDoForPrevilige(prv.getPreviligeVo());
+		return PreviligeMapper.INSTANCE.convertDoToVoForPrevilige(previligeDao.savePreviliges(previliges));
+	}	
+	
 	@Override
 	public List<PreviligeVo> findAllPrevilige() {
 		return PreviligeMapper.INSTANCE.convertDoToVoForPrevilige(previligeDao.findAllPrevilige());
+	}
+
+	@Override
+	public PreviligeVo findPreviligeById(Long id) {
+		Optional<Previlige> pvgOpt=previligeDao.findPreviligeById(id);
+		PreviligeVo previlige=null;
+		if(pvgOpt.isPresent()) {			
+			previlige =PreviligeMapper.INSTANCE.convertDoToVoForPrevilige(pvgOpt.get());
+			System.out.println("pvgOpt.get().getEmployees() : "+pvgOpt.get().getEmployees());
+			//PreviligeMapper.INSTANCE.convertDoToVoForPreviligeListToSet(previlige.getEmployees());
+			//previlige.setEmployees();
+			
+		}
+		return previlige;
 	}
 
 }

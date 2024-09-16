@@ -1,6 +1,6 @@
 package com.oks.jpa.demo.vo;
 
-import java.util.Set;
+import java.util.List;
 
 import com.oks.jpa.demo.entity.Emp;
 
@@ -15,8 +15,9 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 public class PreviligeVo {
+	private static final long serialVersionUID = 1L;
 	private Long id;
 	private String name;
 	private float cost;		
-	Set<Emp> employees;
+	List<Emp> employees;
 }

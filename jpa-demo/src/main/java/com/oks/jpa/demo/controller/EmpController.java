@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,10 +34,21 @@ public class EmpController {
 				HttpStatus.OK);
 	}
 	
-	@PostMapping("/findAll")
+	@PostMapping("/find")
+	public ResponseEntity<EmpResponseVo> findEmpById(@RequestBody EmpRequestVo empRequestVo){
+		List<EmpVo> empVoList=new ArrayList<>();
+		EmpVo empVo=empService.findEmpById(empRequestVo.getEmpId());
+		empVoList.add(empVo);
+			return new ResponseEntity<>(EmpResponseVo.serviceResponse(Constants.SUCCESS_MESSAGE, Constants.SUCCESS_CODE, empVoList),
+				HttpStatus.OK);
+	}
+	
+	@GetMapping("/findAll")
 	public ResponseEntity<EmpResponseVo> findAllEmp(){
 		List<EmpVo> empVoList=empService.findAllEmp();
 			return new ResponseEntity<>(EmpResponseVo.serviceResponse(Constants.SUCCESS_MESSAGE, Constants.SUCCESS_CODE, empVoList),
 				HttpStatus.OK);
 	}
+	
+	
 }

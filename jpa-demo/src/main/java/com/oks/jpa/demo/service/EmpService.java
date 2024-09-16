@@ -8,4 +8,6 @@ import com.oks.jpa.demo.vo.EmpVo;
 public interface EmpService {
 	EmpVo saveEmp(EmpRequestVo empRequestVo);
 	List<EmpVo> findAllEmp();
+    EmpVo findEmpById(Long Id);
+	
 }

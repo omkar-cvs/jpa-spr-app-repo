@@ -13,9 +13,7 @@ import com.oks.jpa.demo.vo.EmpVo;
 public interface EmpMapper {
 	EmpMapper INSTANCE=Mappers.getMapper(EmpMapper.class);	
 	Emp convertVoToDoForEmp(EmpVo empVo);
-	EmpVo convertDoToVoForEmp(Emp empVo);
-	
-	List<EmpVo> convertVoToDoForAllEmp(List<Emp> emp);
-	//Set<EmpVo> convertVoToDoForAllEmp(List<Emp> emp);
-
+	EmpVo convertDoToVoForEmp(Emp empVo);	
+	List<EmpVo> convertVoToDoForAllEmp(List<Emp> empList);
+	List<Emp> convertDoToVoForAllEmp(List<EmpVo> empVoList);
 }
