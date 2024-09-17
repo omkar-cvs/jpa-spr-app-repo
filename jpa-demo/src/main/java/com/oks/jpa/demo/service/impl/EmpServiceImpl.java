@@ -1,7 +1,7 @@
 package com.oks.jpa.demo.service.impl;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +40,24 @@ public class EmpServiceImpl implements EmpService {
 	@Override
 	public EmpVo findEmpById(Long id) {
 		return EmpMapper.INSTANCE.convertDoToVoForEmp(empDao.findEmpById(id).get());
+	}
+
+	@Override
+	public void deleteEmpById(Long id) {
+		empDao.deleteEmpById(id);		
+	}
+
+	@Override
+	public EmpVo allocatePreviligeToEmp(EmpRequestVo empRequestVo) {
+		List<Previlige> pvl=previligeDao.findByPreviligeIn(empRequestVo.getPreviligeIdList());
+		Optional<Emp> empOpt=empDao.findEmpById(empRequestVo.getEmpId());
+		Emp emp=null;
+		if(empOpt.isPresent()) {
+			emp=empOpt.get();
+			emp.setPreviliges(pvl);
+			emp=empDao.saveEmp(emp);
+		}
+		return EmpMapper.INSTANCE.convertDoToVoForEmp(emp);
 	}
 
 }

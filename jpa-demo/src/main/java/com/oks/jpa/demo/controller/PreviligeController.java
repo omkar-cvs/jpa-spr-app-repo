@@ -48,4 +48,12 @@ public class PreviligeController {
 			return new ResponseEntity<>(PreviligeResponseVo.serviceResponse(Constants.SUCCESS_MESSAGE, Constants.SUCCESS_CODE, previligeVoList),
 				HttpStatus.OK);
 	}
+	
+	/* 
+	 * 1) According to business Previlige delete or update is not required
+	 *    In place of updating previlige new previlige should be added 
+	 * 2) I place of deleting the previlige from employee only need to allocate new previlige to 
+	 *    who need to allocated
+	 *  
+	 *  */
 }

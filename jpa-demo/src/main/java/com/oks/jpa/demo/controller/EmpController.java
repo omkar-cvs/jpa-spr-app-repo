@@ -49,15 +49,22 @@ public class EmpController {
 			return new ResponseEntity<>(EmpResponseVo.serviceResponse(Constants.SUCCESS_MESSAGE, Constants.SUCCESS_CODE, empVoList),
 				HttpStatus.OK);
 	}
-	/*
-	@PostMapping("/save")
-	public ResponseEntity<EmpResponseVo> saveEmp(@RequestBody EmpRequestVo empRequestVo){
+	
+	@PostMapping("/delete")
+	public ResponseEntity<EmpResponseVo> deleteEmpById(@RequestBody EmpRequestVo empRequestVo){
+		List<EmpVo> empVoList=new ArrayList<>();
+		empService.deleteEmpById(empRequestVo.getEmpId());		
+			return new ResponseEntity<>(EmpResponseVo.serviceResponse(Constants.SUCCESS_MESSAGE, Constants.SUCCESS_CODE, empVoList),
+				HttpStatus.OK);
+	}
+	
+	@PostMapping("/allocatePreviligesToEmp")
+	public ResponseEntity<EmpResponseVo> allocatePreviligeToEmp(@RequestBody EmpRequestVo empRequestVo){
 		List<EmpVo> empVoList=new ArrayList();
-		EmpVo empVo=empService.saveEmp(empRequestVo);
+		EmpVo empVo=empService.allocatePreviligeToEmp(empRequestVo);
 		empVoList.add(empVo);
 		return new ResponseEntity<>(EmpResponseVo.serviceResponse(Constants.SUCCESS_MESSAGE, Constants.SUCCESS_CODE, empVoList),
 				HttpStatus.OK);
 	}
-	*/ 
 	
 }

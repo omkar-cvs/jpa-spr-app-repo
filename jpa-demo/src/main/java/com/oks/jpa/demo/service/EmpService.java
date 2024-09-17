@@ -8,6 +8,8 @@ import com.oks.jpa.demo.vo.EmpVo;
 public interface EmpService {
 	EmpVo saveEmp(EmpRequestVo empRequestVo);
 	List<EmpVo> findAllEmp();
-    EmpVo findEmpById(Long Id);
+    EmpVo findEmpById(Long id);
+    void deleteEmpById(Long id);
+    EmpVo allocatePreviligeToEmp(EmpRequestVo empRequestVo);
 	
 }

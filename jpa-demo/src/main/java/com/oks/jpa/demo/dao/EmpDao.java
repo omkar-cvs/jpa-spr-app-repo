@@ -9,4 +9,5 @@ public interface EmpDao {
 	Emp saveEmp(Emp e);
 	List<Emp> findAllEmp();
 	Optional<Emp> findEmpById(Long id);
+	void deleteEmpById(Long id);
 }

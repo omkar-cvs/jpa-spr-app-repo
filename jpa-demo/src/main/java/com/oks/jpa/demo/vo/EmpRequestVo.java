@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class EmpRequestVo {
 	private static final long serialVersionUID = 1L;
-	private Long EmpId;
+	private Long empId;
 	private List<Long> previligeIdList;
 	private EmpVo empVo;
 }

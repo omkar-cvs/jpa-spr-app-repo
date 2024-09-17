@@ -17,16 +17,6 @@ public class EmpDaoImpl implements EmpDao {
 
 	@Override
 	public Emp saveEmp(Emp e) {
-		/*
-		Set<Previlige> pset=new HashSet();
-		Previlige p1=new Previlige("Car",500);
-		Previlige p2=new Previlige("Flat",1500);
-		Previlige p3=new Previlige("Club",200);
-		pset.add(p1);
-		pset.add(p2);
-		pset.add(p3);
-		Emp emp=new Emp("Ram","SE",9999,pset);
-		*/
 		return empRepository.save(e);
 	}
 
@@ -38,5 +28,10 @@ public class EmpDaoImpl implements EmpDao {
 	@Override
 	public Optional<Emp> findEmpById(Long id) {
 		return empRepository.findById(id);
+	}
+
+	@Override
+	public void deleteEmpById(Long id) {
+		empRepository.deleteById(id);		
 	}
 }
