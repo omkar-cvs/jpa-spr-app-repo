@@ -40,16 +40,19 @@ public class UserServiceImpl implements UserService {
 		UserVo uv=null;
 		
 		if(userOpt.isPresent()) {
-			System.out.println("posts -> userOpt.get() : "+userOpt.get().getPosts());
+			//System.out.println("posts -> userOpt.get() : "+userOpt.get().getPosts());			
 			uv=UserMapper.INSTANCE.convertDOtoVOForUser(userOpt.get());
+			System.out.println("--------------------ssssssssssss-----------------");
+			System.out.println("posts -> userOpt.get() : "+userOpt.get().getPosts());			
+			uv.setPost(userOpt.get().getPosts());
+			System.out.println("-------------------eeeeeeeeeeeeeee-------------------");
 		}
 		return uv;		
 	}
 
 	@Override
-	public List<UserVo> findAllUser() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<UserVo> findAllUser() {		
+		return UserMapper.INSTANCE.convertDOtoVOForAllUser(userDao.findAllUser());
 	}
 
 	@Override

@@ -12,4 +12,6 @@ public interface PostDao {
 	List<Post> findAllPost();
 	Post updatePost(Post p);
 	 List<Post> saveAllPost(Set<Post> p);
+	
+	 List<Post> findAllPostByUserId(Long Id);
 }

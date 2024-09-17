@@ -1,5 +1,7 @@
 package com.oks.jpa.demo.entity;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,7 +20,11 @@ import lombok.ToString;
 @EqualsAndHashCode
 @Entity
 @Table(name="STUDENT")
-public class Student {
+public class Student implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

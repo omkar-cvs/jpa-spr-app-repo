@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,6 +41,14 @@ public class UserController {
 		List<UserVo> userVoList = new ArrayList<>();
 		UserVo userVo=userService.findUserById(userRequestVo.getUserId());
 		userVoList.add(userVo);
+		return new ResponseEntity<>(
+				UserResponseVo.serviceResponse(Constants.SUCCESS_MESSAGE, Constants.SUCCESS_CODE, userVoList),
+				HttpStatus.OK);
+	}
+	
+	@GetMapping("/findAll")
+	public ResponseEntity<UserResponseVo> findAllUser() {
+		List<UserVo> userVoList =userService.findAllUser();
 		return new ResponseEntity<>(
 				UserResponseVo.serviceResponse(Constants.SUCCESS_MESSAGE, Constants.SUCCESS_CODE, userVoList),
 				HttpStatus.OK);

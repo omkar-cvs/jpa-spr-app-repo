@@ -49,6 +49,15 @@ public class EmpController {
 			return new ResponseEntity<>(EmpResponseVo.serviceResponse(Constants.SUCCESS_MESSAGE, Constants.SUCCESS_CODE, empVoList),
 				HttpStatus.OK);
 	}
-	
+	/*
+	@PostMapping("/save")
+	public ResponseEntity<EmpResponseVo> saveEmp(@RequestBody EmpRequestVo empRequestVo){
+		List<EmpVo> empVoList=new ArrayList();
+		EmpVo empVo=empService.saveEmp(empRequestVo);
+		empVoList.add(empVo);
+		return new ResponseEntity<>(EmpResponseVo.serviceResponse(Constants.SUCCESS_MESSAGE, Constants.SUCCESS_CODE, empVoList),
+				HttpStatus.OK);
+	}
+	*/ 
 	
 }

@@ -1,8 +1,11 @@
 package com.oks.jpa.demo.entity;
 
+import java.io.Serializable;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,7 +27,7 @@ import lombok.ToString;
 @EqualsAndHashCode
 @Entity
 @Table(name="POST")
-public class Post {
+public class Post implements Serializable{
 	 private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "POST_SEQ")

@@ -1,5 +1,7 @@
 package com.oks.jpa.demo.entity;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,7 +20,11 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
-public class HeadOfState {
+public class HeadOfState implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "HEAD_OF_STATE_SEQ")
 	@SequenceGenerator(name="HEAD_OF_STATE_SEQ",initialValue = 1,allocationSize = 1,sequenceName = "HEAD_OF_STATE_SEQ")

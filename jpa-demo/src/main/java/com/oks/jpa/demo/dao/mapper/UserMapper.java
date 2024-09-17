@@ -17,7 +17,7 @@ public interface UserMapper {
 
 	  UserVo convertDOtoVOForUser(User user);
 	
-	  List<UserVo> convertDOtoVOForAllEmp(List<User> userList);
+	  List<UserVo> convertDOtoVOForAllUser(List<User> userList);
 }
 
 

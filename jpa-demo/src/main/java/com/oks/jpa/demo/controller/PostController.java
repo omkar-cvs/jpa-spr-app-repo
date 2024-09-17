@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +37,14 @@ public class PostController {
 		List<PostVo> postVoList = new ArrayList<>();
 		PostVo postVo=postService.findPostById(postRequestVo.getPostId());
 		postVoList.add(postVo);
+		return new ResponseEntity<>(
+				PostResponseVo.serviceResponse(Constants.SUCCESS_MESSAGE, Constants.SUCCESS_CODE, postVoList),
+				HttpStatus.OK);
+	}
+	
+	@GetMapping("/findAll")
+	public ResponseEntity<PostResponseVo> findAllPost() {
+		List<PostVo> postVoList = postService.findAllPost();
 		return new ResponseEntity<>(
 				PostResponseVo.serviceResponse(Constants.SUCCESS_MESSAGE, Constants.SUCCESS_CODE, postVoList),
 				HttpStatus.OK);

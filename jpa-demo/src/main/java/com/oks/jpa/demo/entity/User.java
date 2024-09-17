@@ -1,5 +1,6 @@
 package com.oks.jpa.demo.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -28,7 +29,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode
 @Entity
 @Table(name="USER_TBL")
-public class User {
+public class User implements Serializable{
 	 private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "USER_SEQ")

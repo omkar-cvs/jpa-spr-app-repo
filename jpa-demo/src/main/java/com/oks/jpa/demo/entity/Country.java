@@ -1,5 +1,7 @@
 package com.oks.jpa.demo.entity;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,7 +20,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
-public class Country {
+public class Country implements Serializable{
 	@Id
 	@GeneratedValue(strategy= GenerationType.SEQUENCE, generator= "COUNTRY_SEQ")
 	@SequenceGenerator(name="COUNTRY_SEQ",initialValue = 1,allocationSize = 1,sequenceName = "EMP_SEQ")

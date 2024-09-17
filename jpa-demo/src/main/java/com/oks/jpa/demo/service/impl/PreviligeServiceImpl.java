@@ -24,25 +24,6 @@ public class PreviligeServiceImpl implements PreviligeService {
 	PreviligeDao previligeDao;
 	@Autowired
 	EmpDao empDao;
-/*
-	@Override
-	public List<PreviligeVo> savePrevilige(PreviligeRequestVo prv) {
-		Optional<Emp> empOpt = empDao.findEmpById(prv.getEmpId());
-		Set<Emp> empSet = new HashSet();
-		List<Previlige> previliges = new ArrayList();
-		if (empOpt.isPresent()) {
-			Emp emp = empOpt.get();
-			empSet.add(emp);
-
-			List<Previlige> previligeList = PreviligeMapper.INSTANCE.convertVoToDoForPrevilige(prv.getPreviligeVo());
-			for (Previlige previlige : previligeList) {		
-				previliges.add(new Previlige(previlige.getName(), previlige.getCost()));
-			}
-		}
-
-		return PreviligeMapper.INSTANCE.convertDoToVoForPrevilige(previligeDao.savePreviliges(previliges));
-	}
-*/
 	
 	//updating in exiting one Bidirection 
 	@Override

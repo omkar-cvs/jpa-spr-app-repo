@@ -1,5 +1,6 @@
 package com.oks.jpa.demo.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -27,7 +28,7 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 //@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class ,property = "id")// it is not working
-public class Emp {
+public class Emp implements Serializable{
 	
 	   private static final long serialVersionUID = 1L;
 	
@@ -54,7 +55,7 @@ public class Emp {
 		this.salary = salary;
 		this.previliges = previliges;
 	}
-	
+	@ToString.Exclude
 	@ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)	
 	@JoinTable(name="EMP_PREVILEGE",
 			   joinColumns = {@JoinColumn(name="EMP_ID")},

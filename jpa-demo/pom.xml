@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.3</version>
+		<version>3.3.3</version>		
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.oks</groupId>
@@ -30,7 +30,7 @@
 		<java.version>17</java.version>
 		 <org.mapstruct.version>1.6.0</org.mapstruct.version>
         <org.projectlombok.version>1.18.30</org.projectlombok.version>
-        <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
+        <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>        
 	</properties>
 	<dependencies>
 		<dependency>

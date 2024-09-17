@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,7 +42,7 @@ public class PreviligeController {
 			return new ResponseEntity<>(PreviligeResponseVo.serviceResponse(Constants.SUCCESS_MESSAGE, Constants.SUCCESS_CODE, previligeVoList),
 				HttpStatus.OK);
 	}
-	@PostMapping(value="/findAll",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value="/findAll")
 	public ResponseEntity<PreviligeResponseVo> findAllPrevilige(){
 		List<PreviligeVo> previligeVoList=previligeService.findAllPrevilige();
 			return new ResponseEntity<>(PreviligeResponseVo.serviceResponse(Constants.SUCCESS_MESSAGE, Constants.SUCCESS_CODE, previligeVoList),

@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.oks.jpa.demo.dao.PostDao;
 import com.oks.jpa.demo.dao.mapper.PostMapper;
 import com.oks.jpa.demo.dao.mapper.UserMapper;
 import com.oks.jpa.demo.entity.Post;
@@ -25,10 +26,12 @@ public class PostServiceImpl implements PostService {
 	@Autowired
 	PostRepository postRepository; 
 	@Autowired
-	UserRepository userRepository;
+	UserRepository userRepository;	
+
+	@Autowired
+	PostDao postDao; 
+	
 	@Override
-
-
 	public PostVo savePost(PostVo pv,Long userId) {
 		Optional<User> userOpt=userRepository.findById(userId);
 		PostVo postVoSaved=null;
@@ -57,8 +60,7 @@ public class PostServiceImpl implements PostService {
 
 	@Override
 	public List<PostVo> findAllPost() {
-		//postRepository.find
-		return null;
+		return PostMapper.INSTANCE.convertDOtoVOForAllPost(postDao.findAllPost());
 	}
 
 	@Override

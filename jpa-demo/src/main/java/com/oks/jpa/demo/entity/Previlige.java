@@ -1,5 +1,6 @@
 package com.oks.jpa.demo.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -26,8 +27,8 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 //@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class ,property = "id")//it is not working
-public class Previlige {
-	 private static final long serialVersionUID = 1L;
+public class Previlige implements Serializable{
+	 private static final long serialVersionUID = 1L; 
 	
 	@Id
 	@GeneratedValue(strategy =GenerationType.SEQUENCE,generator = "PREVILIGE_SEQ" )
@@ -48,7 +49,7 @@ public class Previlige {
 	 */
 
 	
-
+	//@ToString.Exclude //not required here
 	@ManyToMany(mappedBy = "previliges",fetch = FetchType.LAZY)
 	//@JsonBackReference
 	@JsonIgnore	
