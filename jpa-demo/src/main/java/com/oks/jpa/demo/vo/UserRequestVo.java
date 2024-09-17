@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserRequestVo {	
+public class UserRequestVo {
+	 private static final long serialVersionUID = 1L;
+	 private Long userId;
 	 private UserVo userVo;
 }
 

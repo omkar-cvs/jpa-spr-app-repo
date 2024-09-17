@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor(staticName = "serviceResponse")
 public class UserResponseVo {
+	private static final long serialVersionUID = 1L;
 	private String message;
 	private String status;
 	private List<UserVo> userVo;

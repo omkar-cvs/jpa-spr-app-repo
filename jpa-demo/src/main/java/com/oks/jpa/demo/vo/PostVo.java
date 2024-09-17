@@ -1,6 +1,7 @@
 package com.oks.jpa.demo.vo;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.oks.jpa.demo.entity.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,7 +14,6 @@ public class PostVo {
 	Long id;	
 	private String title;
 	private String contents;
-	//private String userId;
-	//@JsonBackReference
-	//UserVo userVo;
+	//@JsonBackReference //not working proper		
+	User user;
 }

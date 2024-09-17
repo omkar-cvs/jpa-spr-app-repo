@@ -34,63 +34,16 @@ public class UserServiceImpl implements UserService {
 		return userVoSaved;
 	}
 	
-	//@Override
-	public UserVo saveUserTemp(UserVo userVo) {
-	/*	
-		User u=new User();
-		//u.setId(null);
-		u.setName("Omkar");
-		u.setMailId("a@bcom");
-		u.setPassword("1233");
-		*/
-	/*	
-		Post p1=new Post();
-		p1.setTitle("java");
-		p1.setContents("Java Language");
-		Post p2=new Post();
-		p2.setTitle("Spring");
-		p2.setContents("Framework");
-		
-		Set<Post> posts=new HashSet<>();
-		posts.add(p1);
-		posts.add(p2);
-		
-		u.setPosts(posts);
-	*/	
-		    Set<Post> s1=new HashSet<Post>();
-	        s1.add(new Post("First Post","It is Dummy Post"));
-	        s1.add(new Post("Second Post","It is Another Dummy Post"));
-	        
-	        Set<Post> s2=new HashSet<Post>();
-	        s2.add(new Post("P1","It is an imp post"));
-	        s2.add(new Post("p2","It is temp Post"));
-	        s2.add(new Post("p3","It is Third post"));
-	        
-	      //User u1=new User("Omkar","oks@.gmail.com","123", s1);
-	      //User u2=new User("Ramu","ramu@gmail.com","ramu", s2);
-	        User u1=userDao.findUserById(6l).get();
-	       u1.setPosts(s2);
-	        
-		
-		User userSaved=userDao.saveUser(u1);
-		//userSaved=userDao.saveUser(u2);
-		
-				
-		UserVo userVoSaved=UserMapper.INSTANCE.convertDOtoVOForUser(userSaved);
-		//Set<PostVo> postVoSet=PostMapper.INSTANCE.convertDOtoVOForAllPost(userSaved.getPosts());
-		//userVoSaved.setPostVo(postVoSet);
-		
-		return userVoSaved;
-	}
-
-	
-
-	
-	
 	@Override
-	public Optional<UserVo> findUserById(Long id) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+	public UserVo findUserById(Long id) {	
+		Optional<User> userOpt=userDao.findUserById(id);	
+		UserVo uv=null;
+		
+		if(userOpt.isPresent()) {
+			System.out.println("posts -> userOpt.get() : "+userOpt.get().getPosts());
+			uv=UserMapper.INSTANCE.convertDOtoVOForUser(userOpt.get());
+		}
+		return uv;		
 	}
 
 	@Override
@@ -104,4 +57,5 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 }

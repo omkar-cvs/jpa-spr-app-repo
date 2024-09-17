@@ -7,7 +7,7 @@ import com.oks.jpa.demo.vo.PostVo;
 
 public interface PostService {
 	PostVo savePost(PostVo pv,Long userId);
-	Optional<PostVo> findPostById(Long id);
+	PostVo findPostById(Long id);
 	List<PostVo> findAllPost();
 	PostVo updatePost(PostVo pv);
 }

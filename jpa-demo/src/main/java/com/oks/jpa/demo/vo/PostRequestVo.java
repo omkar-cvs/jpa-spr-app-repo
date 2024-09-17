@@ -10,7 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PostRequestVo {
+	private static final long serialVersionUID = 1L;
 	 private Long userId;
-	// private Set<PostVo> postVo;
+	 private Long postId;
 	 private PostVo postVo;
 }

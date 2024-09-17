@@ -31,4 +31,13 @@ public class PostController {
 				PostResponseVo.serviceResponse(Constants.SUCCESS_MESSAGE, Constants.SUCCESS_CODE, postVoList),
 				HttpStatus.OK);
 	}
+	@PostMapping("/find")
+	public ResponseEntity<PostResponseVo> findPost(@RequestBody PostRequestVo postRequestVo) {
+		List<PostVo> postVoList = new ArrayList<>();
+		PostVo postVo=postService.findPostById(postRequestVo.getPostId());
+		postVoList.add(postVo);
+		return new ResponseEntity<>(
+				PostResponseVo.serviceResponse(Constants.SUCCESS_MESSAGE, Constants.SUCCESS_CODE, postVoList),
+				HttpStatus.OK);
+	}
 }

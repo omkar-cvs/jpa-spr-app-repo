@@ -17,7 +17,7 @@ public interface PostMapper {
 
 	  PostVo convertDOtoVOForPost(Post post);
 	
-	  Set<PostVo> convertDOtoVOForAllPost(Set<Post> postList);
+	  List<PostVo> convertDOtoVOForAllPost(List<Post> postList);
 	  
-	  Set<Post> convertVOtodDOForAllPost(Set<PostVo> postVoList);
+	  List<Post> convertVOtodDOForAllPost(List<PostVo> postVoList);
 }

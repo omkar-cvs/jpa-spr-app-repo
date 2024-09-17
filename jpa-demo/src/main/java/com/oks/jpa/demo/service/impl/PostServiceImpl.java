@@ -3,7 +3,7 @@ package com.oks.jpa.demo.service.impl;
 import java.util.List;
 import java.util.Optional;
 
-import org.hibernate.event.spi.PersistContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,10 +15,9 @@ import com.oks.jpa.demo.repository.PostRepository;
 import com.oks.jpa.demo.repository.UserRepository;
 import com.oks.jpa.demo.service.PostService;
 import com.oks.jpa.demo.vo.PostVo;
+import com.oks.jpa.demo.vo.UserVo;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.transaction.Transactional;
+
 @Service
 public class PostServiceImpl implements PostService {
 	//@PersistenceContext
@@ -34,30 +33,31 @@ public class PostServiceImpl implements PostService {
 		Optional<User> userOpt=userRepository.findById(userId);
 		PostVo postVoSaved=null;
 			if(userOpt.isPresent()) {		
-				Post post=PostMapper.INSTANCE.convertVOtoDOForPost(pv);		
-				post.setUser(userOpt.get());
+				Post post=PostMapper.INSTANCE.convertVOtoDOForPost(pv);					
 				Post postSaved=null;
+				post.setUser(userOpt.get());
 				postSaved=postRepository.save(post); 		
 				postVoSaved=PostMapper.INSTANCE.convertDOtoVOForPost(postSaved);	
 			}
 		return postVoSaved;
 	}
 
-	public PostVo savePostTemp(PostVo pv) {
-		
-		User u=userRepository.findById(1l).get();
-		//Post post=new Post("Java", "Programing Language", u);
-		//postRepository.save(post); 
-		
-		return null;
-	}
+
 	@Override
-	public Optional<PostVo> findPostById(Long id) {
-		return Optional.empty();
+	public PostVo findPostById(Long id) {
+		Optional<Post> postOpt=postRepository.findById(id);	
+		PostVo pv=null;
+	    if(postOpt.isPresent()) {
+	    	pv=PostMapper.INSTANCE.convertDOtoVOForPost( postOpt.get());
+	    	System.out.println("pv.getPost : "+postOpt.get()); 
+	    	//System.out.println("pv.getUser() : "+postOpt.get().getUser()); 
+	    }	    
+		return pv;
 	}
 
 	@Override
 	public List<PostVo> findAllPost() {
+		//postRepository.find
 		return null;
 	}
 

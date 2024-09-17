@@ -7,7 +7,7 @@ import com.oks.jpa.demo.vo.UserVo;
 
 public interface UserService {
 	UserVo saveUser(UserVo userVo);
-	Optional<UserVo> findUserById(Long id);
+	UserVo findUserById(Long id);
 	List<UserVo> findAllUser();
 	UserVo updateUser(UserVo e);
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import com.oks.jpa.demo.dao.UserDao;
 import com.oks.jpa.demo.entity.User;
 import com.oks.jpa.demo.repository.UserRepository;
+import com.oks.jpa.demo.vo.UserVo;
 
 @Component
 public class UserDaoImpl implements UserDao{
@@ -22,7 +23,13 @@ public class UserDaoImpl implements UserDao{
 
 	@Override
 	public  Optional<User> findUserById(Long id) {
-		return userRepository.findById(id);
+		Optional<User> vo=userRepository.findById(id);
+		User u=null;
+		if(vo.isPresent()) {
+			 u=vo.get();
+			 System.out.println("user : "+u);
+		}	 
+		return vo;
 	}
 
 	@Override

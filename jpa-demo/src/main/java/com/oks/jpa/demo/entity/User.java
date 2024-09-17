@@ -1,16 +1,9 @@
 package com.oks.jpa.demo.entity;
 
-/*import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-*/
+import java.util.List;
 
-
-
-import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -19,7 +12,6 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
@@ -27,17 +19,17 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+//@ToString
 @EqualsAndHashCode
 @Entity
 @Table(name="USER_TBL")
 public class User {
+	 private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "USER_SEQ")
 	@SequenceGenerator(name = "USER_SEQ",initialValue = 1,allocationSize = 1,sequenceName = "USER_SEQ")
@@ -56,16 +48,17 @@ public class User {
 	        this.password = password;
 	    } 
 	 
-	 public User(String name, String mailId, String password, Set<Post> posts) {
+	 public User(String name, String mailId, String password, List<Post> posts) {
 	        this.name = name;
 	        this.mailId = mailId;
 	        this.password = password;
 	        this.posts = posts;
 	    }
-	       
-	
-     @OneToMany(mappedBy = "user",cascade = {CascadeType.ALL},fetch = FetchType.EAGER, orphanRemoval = true)  		
-	 Set<Post> posts;
+	 
+     @OneToMany(mappedBy = "user",cascade = {CascadeType.ALL},fetch = FetchType.LAZY, orphanRemoval = true)   
+     @JsonIgnore
+     //@JsonManagedReference //not working
+	 List<Post> posts;
 }
 
 

@@ -35,4 +35,15 @@ public class UserController {
 	}
 	
 
+	@PostMapping("/find")
+	public ResponseEntity<UserResponseVo> findUserById(@RequestBody UserRequestVo userRequestVo) {
+		List<UserVo> userVoList = new ArrayList<>();
+		UserVo userVo=userService.findUserById(userRequestVo.getUserId());
+		userVoList.add(userVo);
+		return new ResponseEntity<>(
+				UserResponseVo.serviceResponse(Constants.SUCCESS_MESSAGE, Constants.SUCCESS_CODE, userVoList),
+				HttpStatus.OK);
+	}
+	
+
 }

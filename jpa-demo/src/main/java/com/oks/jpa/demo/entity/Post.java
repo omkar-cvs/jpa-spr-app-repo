@@ -20,11 +20,12 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+//@ToString
 @EqualsAndHashCode
 @Entity
 @Table(name="POST")
 public class Post {
+	 private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "POST_SEQ")
 	@SequenceGenerator(name = "POST_SEQ",initialValue = 1,allocationSize = 1,sequenceName = "POST_SEQ")
@@ -45,8 +46,10 @@ public class Post {
 	        this.contents = contents;
 	      
 	    } 
+	@ToString.Exclude
 	@ManyToOne(cascade = {CascadeType.ALL})
-	@JoinColumn(name="USER_ID")
+	@JoinColumn(name="USER_ID")	
+	//@JsonBackReference //not working
 	User user;
     
 }
