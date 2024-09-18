@@ -8,10 +8,18 @@ import com.oks.jpa.demo.entity.Post;
 
 public interface PostDao {
 	Post savePost(Post p);
+
 	Optional<Post> findPostById(Long id);
+
 	List<Post> findAllPost();
-	Post updatePost(Post p);
-	 List<Post> saveAllPost(Set<Post> p);
-	
-	 List<Post> findAllPostByUserId(Long Id);
+
+	Post updatePostById(Post p);
+
+	List<Post> saveAllPost(Set<Post> p);
+
+	List<Post> findAllPostByUserId(Long Id);
+
+	void deletePostById(Long id);
+
+	void postDeleteById(Long id);
 }

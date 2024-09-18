@@ -41,4 +41,9 @@ public class UserDaoImpl implements UserDao{
 	public User updateUser(User u) {
 		return userRepository.save(u);
 	}
+
+	@Override
+	public void deleteUserById(Long id) {
+		userRepository.deleteById(id);		
+	}
 }

@@ -56,9 +56,27 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserVo updateUser(UserVo e) {
-		// TODO Auto-generated method stub
-		return null;
+	public UserVo updateUserById(UserVo uv) {
+		Optional<User> userOpt=userDao.findUserById(uv.getId());
+		UserVo userVoSaved=null;
+		if(userOpt.isPresent()) {
+			User user=userOpt.get();
+			user=populateUserFromUserVo(uv,user);
+			User userSaved=userDao.saveUser(user);				
+			userVoSaved=UserMapper.INSTANCE.convertDOtoVOForUser(userSaved);				
+		}
+		return userVoSaved;
+	}
+
+	@Override
+	public void deleteUserById(Long id) {
+		userDao.deleteUserById(id);		
+	}
+	
+	private User populateUserFromUserVo(UserVo uv,User u) {	
+		u.setMailId(uv.getMailId());
+		u.setPassword(uv.getPassword());
+		return u;
 	}
 	
 }

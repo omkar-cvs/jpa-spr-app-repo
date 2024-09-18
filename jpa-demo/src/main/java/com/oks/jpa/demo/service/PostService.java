@@ -9,5 +9,7 @@ public interface PostService {
 	PostVo savePost(PostVo pv,Long userId);
 	PostVo findPostById(Long id);
 	List<PostVo> findAllPost();
-	PostVo updatePost(PostVo pv);
+	PostVo updatePostById(PostVo pv);
+	void deletePostById(Long id);
+	void postDeleteById(Long id);
 }

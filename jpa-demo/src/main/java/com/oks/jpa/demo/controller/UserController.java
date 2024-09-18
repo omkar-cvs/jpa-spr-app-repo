@@ -55,4 +55,23 @@ public class UserController {
 	}
 	
 
+	@PostMapping("/delete")
+	public ResponseEntity<UserResponseVo> deleteUserById(@RequestBody UserRequestVo userRequestVo) {
+		List<UserVo> userVoList = new ArrayList<>();
+		userService.deleteUserById(userRequestVo.getUserId());		
+		return new ResponseEntity<>(
+				UserResponseVo.serviceResponse(Constants.SUCCESS_MESSAGE, Constants.SUCCESS_CODE, userVoList),
+				HttpStatus.OK);
+	}
+	
+	@PostMapping("/update")
+	public ResponseEntity<UserResponseVo> updateUser(@RequestBody UserRequestVo userRequestVo) {
+		List<UserVo> userVoList = new ArrayList<>();
+		UserVo userVo=userService.updateUserById(userRequestVo.getUserVo());
+		userVoList.add(userVo);
+		return new ResponseEntity<>(
+				UserResponseVo.serviceResponse(Constants.SUCCESS_MESSAGE, Constants.SUCCESS_CODE, userVoList),
+				HttpStatus.OK);
+	}
+
 }

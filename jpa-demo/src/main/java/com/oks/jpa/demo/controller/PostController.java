@@ -49,4 +49,29 @@ public class PostController {
 				PostResponseVo.serviceResponse(Constants.SUCCESS_MESSAGE, Constants.SUCCESS_CODE, postVoList),
 				HttpStatus.OK);
 	}
+	
+	@PostMapping("/update")
+	public ResponseEntity<PostResponseVo> updatePostById(@RequestBody PostRequestVo postRequestVo) {
+		System.out.println("[01] controller--------------");
+		List<PostVo> postVoList = new ArrayList<>();
+		PostVo postVo=postService.updatePostById(postRequestVo.getPostVo());
+		
+		postVoList.add(postVo);
+		return new ResponseEntity<>(
+				PostResponseVo.serviceResponse(Constants.SUCCESS_MESSAGE, Constants.SUCCESS_CODE, postVoList),
+				HttpStatus.OK);
+	}
+	
+	/* This method delete all post and related user*/	
+	@PostMapping("/delete")
+	public ResponseEntity<PostResponseVo> deletePostById(@RequestBody PostRequestVo postRequestVo) {
+		List<PostVo> postVoList = new ArrayList<>();
+		postService.deletePostById(postRequestVo.getPostId());	
+		return new ResponseEntity<>(
+				PostResponseVo.serviceResponse(Constants.SUCCESS_MESSAGE, Constants.SUCCESS_CODE, postVoList),
+				HttpStatus.OK);
+	}
+	
+	
+	
 }
